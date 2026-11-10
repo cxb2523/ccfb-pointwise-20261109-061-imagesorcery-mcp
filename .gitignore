@@ -1,0 +1,29 @@
+venv
+.venv
+.env
+__pycache__
+.pytest_cache
+.coverage
+.ruff_cache
+.vscode
+htmlcov
+**/logs/
+/dist/
+
+# Ultralytics directories
+/models/
+/weights/
+/runs/
+/datasets/
+
+# Ultralytics settings
+models/settings.json
+
+# CLIP model file
+mobileclip_blt.ts
+
+# User configuration file
+config.toml
+
+# Telemetry user ID
+.user_id

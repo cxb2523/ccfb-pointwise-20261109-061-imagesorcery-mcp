@@ -1,0 +1,98 @@
+[project]
+name = "imagesorcery-mcp"
+version = "0.12.0"
+description = "A Model Context Protocol server providing image manipulation tools for LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "titulus", email = "titulus.web@gmail.com" },
+]
+keywords = ["mcp", "llm"]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "fastmcp>=2.10.0,<3.0.0", # core for MCP servers
+    "pydantic>=2.0.0", # For data validation, settings management, and serialization of classes
+    "opencv-python>=4.5.0", # For image processing and computer vision tasks
+    "imutils>=0.5.4", # For image processing typical tasks which are not included in OpenCV
+    "Pillow", # For retrieving image metadata
+    "ultralytics", # For object detection
+    "requests", # For HTTP requests to download models
+    "tqdm", # For progress bars during downloads
+    "huggingface_hub", # For accessing models from Hugging Face
+    "easyocr", # For OCR
+    "toml", # For reading pyproject.toml
+    "amplitude-analytics", # For telemetry
+    "posthog", # For telemetry
+    "python-dotenv", # For loading environment variables from .env file
+]
+
+[project.urls]
+Homepage = "https://github.com/sunriseapps/imagesorcery-mcp"
+Repository = "https://github.com/sunriseapps/imagesorcery-mcp"
+[project.scripts]
+imagesorcery-mcp = "imagesorcery_mcp:main"
+download-yolo-models = "imagesorcery_mcp.scripts.download_models:main"
+create-model-descriptions = "imagesorcery_mcp.scripts.create_model_descriptions:main"
+download-clip-models = "imagesorcery_mcp.scripts.download_clip:main"
+post-install-imagesorcery = "imagesorcery_mcp.scripts.post_install:main"
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "pytest-asyncio", "build", "twine"]
+clip = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.ruff]
+# PEP 8 style guidelines
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.10
+target-version = "py310"
+
+# Allow imports relative to the "src" and "tests" directories.
+src = ["src", "tests"]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.lint]
+# Enable flake8-bugbear (`B`) rules.
+select = ["E", "F", "B", "I"]
+ignore = [
+    "E501", # Ignore line length violations
+]
