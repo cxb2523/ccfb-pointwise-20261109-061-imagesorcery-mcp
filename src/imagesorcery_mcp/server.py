@@ -43,6 +43,7 @@ from imagesorcery_mcp.tools import (  # noqa: E402
     draw_lines,
     draw_rectangle,
     draw_text,
+    enhance,
     fill,
     find,
     metainfo,
@@ -88,6 +89,7 @@ draw_circle.register_tool(mcp)
 draw_lines.register_tool(mcp)
 draw_rectangle.register_tool(mcp)
 draw_text.register_tool(mcp)
+enhance.register_tool(mcp)
 fill.register_tool(mcp)
 find.register_tool(mcp)
 metainfo.register_tool(mcp)
